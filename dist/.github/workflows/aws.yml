@@ -24,10 +24,8 @@
 #    and best practices on handling the access key credentials.
 
 on:
-  pull_request:
-    branches: [ staging ]
-      
-      
+  release:
+    types: [created]
 
 name: Deploy to Amazon ECS
 
@@ -41,6 +39,7 @@ jobs:
         run: |
           npm audit fix
           npm install
+          npm build
         
       - uses: actions/upload-artifact@master
         with:
